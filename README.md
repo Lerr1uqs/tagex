@@ -177,6 +177,10 @@ tagex extract ./src --tag "HACK:" --output hacks.md
 
 ## 输出示例
 
+### 实际运行效果
+
+![TagEx 运行示例](assets/image.png)
+
 ### 树形视图（默认）
 
 ```
@@ -220,7 +224,7 @@ def extract(self) -> ExtractionResult:
     # TODO: add caching
     return self._results
 ```
-```
+
 
 ## 作为 Python 库使用
 
