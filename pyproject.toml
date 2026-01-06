@@ -20,8 +20,8 @@ dependencies = [
 tagex = "tagex.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/tagex"
-Repository = "https://github.com/yourusername/tagex"
+Homepage = "https://github.com/Lerr1uqs/tagex"
+Repository = "https://github.com/Lerr1uqs/tagex"
 
 [build-system]
 requires = ["hatchling"]

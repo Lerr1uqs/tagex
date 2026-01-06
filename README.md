@@ -12,7 +12,18 @@
 - ✅ 完整的类型检查（mypy）
 - ✅ 可作为 uv tool 安装
 
+## 项目目的
+
+TagEx 是一个用于从 Python 代码中提取特定标签（如 TODO、FIXME、AGENT-TODO 等）的命令行工具。项目框架编写中，通过对应的 agent tag，提取出 AI 应该完成的部分，喂给 AI 编码助手来完成对应的代码片段。
+
 ## 安装
+
+### 使用 uvx 快速运行（推荐）
+
+```bash
+# 直接从 GitHub 仓库运行，无需安装
+uvx --from git+https://github.com/Lerr1uqs/tagex.git tagex extract -t "AGENT-TODO:" ./tagex
+```
 
 ### 使用 uv 安装（推荐）
 
@@ -21,14 +32,14 @@
 uv tool install .
 
 # 或从 Git 仓库安装
-uv tool install git+https://github.com/yourusername/tagex.git
+uv tool install git+https://github.com/Lerr1uqs/tagex.git
 ```
 
 ### 手动安装
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/tagex.git
+git clone https://github.com/Lerr1uqs/tagex.git
 cd tagex
 
 # 同步依赖
@@ -119,13 +130,30 @@ tagex extract ./src/utils.py \
 
 #### 1. 提取 AI Agent 任务
 
+TagEx 特别设计用于 AI 编码助手工作流。通过在代码中添加 `AGENT-TODO:` 标签，可以标记需要 AI 完成的任务片段，然后使用 TagEx 提取这些任务供 AI 处理。
+
 ```bash
 # 搜索所有 AGENT-TODO 标签，保存为 Markdown
 tagex extract ./ --tag "AGENT-TODO:" --output agent_tasks.md
 
+# 使用 uvx 快速运行
+uvx --from git+https://github.com/Lerr1uqs/tagex.git tagex extract -t "AGENT-TODO:" ./tagex
+
 # 只搜索函数中的 AGENT-TODO
 tagex extract ./ --tag "AGENT-TODO:" --no-classes --table
 ```
+
+**使用示例：**
+
+在代码中标记 AI 任务：
+```python
+def process_data(data: List[Dict]) -> Dict:
+    # AGENT-TODO: 实现数据验证逻辑，确保所有必需字段都存在
+    # AGENT-TODO: 添加异常处理，处理无效数据格式
+    pass
+```
+
+提取任务后，可以将结果直接提供给 AI 编码助手来完成对应的代码片段。
 
 #### 2. 生成代码审查报告
 
@@ -345,7 +373,7 @@ MIT License
 
 ## 作者
 
-TagEx Team
+Lerr1uqs
 
 ## 更新日志
 
